@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+import { Shield, Star, ArrowRight } from 'lucide-react';
 
 function Header() {
   return (
@@ -9,19 +11,18 @@ function Header() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <div className="w-6 h-6 bg-white rounded flex items-center justify-center">
-                  <span className="text-blue-600 font-bold text-sm">M</span>
-                </div>
-              </div>
+                <div className="bg-blue-600 p-2 rounded-lg">
+                    <Shield className="h-8 w-8 text-white" />
+                  </div>
               <span className="ml-3 text-xl font-semibold text-gray-900"></span>
             </div>
 
             {/* Navigation */}
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Appointments</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Doctors</a>
+             <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</Link>
+            <Link to="/appointments" className="text-gray-700 hover:text-blue-600 transition-colors">Appointments</Link>
+               <Link to="/doctors" className="text-gray-700 hover:text-blue-600 transition-colors">Doctors</Link>
+              <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-colors">About Us</Link>
             </nav>
 
             {/* CTA Button */}

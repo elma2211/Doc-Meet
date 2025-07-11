@@ -1,7 +1,8 @@
 import React from 'react'
-import { Star, ArrowRight } from 'lucide-react';
+import { Shield, Star, ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+
 
 function Landingpage() {
   return (
