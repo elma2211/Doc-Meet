@@ -1,6 +1,7 @@
 import React from "react";
 import { Shield, Heart, Users, Award, ArrowRight, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 
 // import { Heart, Award, Users, Shield } from 'lucide-react';
@@ -9,30 +10,10 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <Shield className="h-8 w-8 text-white" />
-              </div>
-              <h1 className="ml-3 text-2xl font-bold text-gray-900">MediCare</h1>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-               <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</Link>
-              <Link to="/appointments" className="text-gray-700 hover:text-blue-600 transition-colors">Appointments</Link>
-              <Link to="/doctors" className="text-gray-700 hover:text-blue-600 transition-colors">Doctors</Link>
-              <Link to="/about" className="text-blue-600 font-medium">About Us</Link>
-            </nav>
-            <button className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
-              Book Appointment
-            </button>
-          </div>
-        </div>
-      </header>
+     <Header/>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-15">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-blue-600 mb-6">About MediCare</h2>
@@ -116,47 +97,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* Leadership Team */}
-        <div className="text-center">
-          <h3 className="text-3xl font-bold text-blue-600 mb-12">Meet Our Leadership Team</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Team Member 1 */}
-            <div className="bg-white rounded-xl p-8 shadow-sm">
-              <div className="bg-blue-100 p-6 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
-                <Users className="h-12 w-12 text-blue-600" />
-              </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">Dr. Sarah Johnson</h4>
-              <p className="text-blue-600 font-semibold mb-4">Chief Medical Officer</p>
-              <p className="text-gray-600 text-sm">
-                With over 15 years of experience in internal medicine and healthcare administration.
-              </p>
-            </div>
-
-            {/* Team Member 2 */}
-            <div className="bg-white rounded-xl p-8 shadow-sm">
-              <div className="bg-blue-100 p-6 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
-                <Users className="h-12 w-12 text-blue-600" />
-              </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">Michael Chen</h4>
-              <p className="text-blue-600 font-semibold mb-4">Chief Executive Officer</p>
-              <p className="text-gray-600 text-sm">
-                Leading healthcare innovation with a focus on patient-centered care and technology.
-              </p>
-            </div>
-
-            {/* Team Member 3 */}
-            <div className="bg-white rounded-xl p-8 shadow-sm">
-              <div className="bg-blue-100 p-6 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
-                <Users className="h-12 w-12 text-blue-600" />
-              </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">Dr. Emily Rodriguez</h4>
-              <p className="text-blue-600 font-semibold mb-4">Chief Technology Officer</p>
-              <p className="text-gray-600 text-sm">
-                Driving digital transformation in healthcare with cutting-edge medical technology.
-              </p>
-            </div>
-          </div>
-        </div>
+       
       </main>
     </div>
   );

@@ -13,8 +13,9 @@ function Header() {
             <div className="flex items-center">
                 <div className="bg-blue-600 p-2 rounded-lg">
                     <Shield className="h-8 w-8 text-white" />
+                   
                   </div>
-              <span className="ml-3 text-xl font-semibold text-gray-900"></span>
+              <span className="ml-3 text-xl font-semibold text-gray-900">MediCare</span>
             </div>
 
             {/* Navigation */}
@@ -26,9 +27,9 @@ function Header() {
             </nav>
 
             {/* CTA Button */}
-            <button className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors">
+            <Link to='' className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors">
               Book Appointment
-            </button>
+            </Link>
           </div>
         </div>
       </header>

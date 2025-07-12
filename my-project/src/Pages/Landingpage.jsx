@@ -2,6 +2,7 @@ import React from 'react'
 import { Shield, Star, ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { Link } from "react-router-dom";
 
 
 function Landingpage() {
@@ -25,12 +26,12 @@ function Landingpage() {
 
           {/* */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105 flex items-center gap-2 font-semibold">
+            <Link to='/appointments' className="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105 flex items-center gap-2 font-semibold">
               Book Appointment
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </button>
+            </Link>
             
             <button className="bg-white text-gray-900 px-8 py-4 rounded-lg hover:bg-gray-50 transition-all transform hover:scale-105 border border-gray-200 font-semibold">
               View Doctors
