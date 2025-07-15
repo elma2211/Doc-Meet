@@ -3,6 +3,7 @@ import { Star, ArrowRight } from 'lucide-react';
 import Landingpage from './Pages/Landingpage';
 import AboutUs from './Pages/AboutUs';
 import Appointment from './Pages/Appointment';
+import Doctors from './Pages/Doctors.jsx';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -11,9 +12,9 @@ const App = () => {
        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landingpage />} />
-          {/* <Route path="/book" element={<BookAppointment />} />
-          <Route path="/doctors" element={<Doctors />} />
-          <Route path="/doctors/:id" element={<DoctorDetail />} /> */}
+          {/* <Route path="/book" element={<BookAppointment />} /> */}
+           <Route path="/doctors" element={<Doctors />} />
+          {/* <Route path="/doctors/:id" element={<DoctorDetail />} /> */}
           <Route path="/appointments" element={<Appointment />} />
           <Route path="/about" element={<AboutUs />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE

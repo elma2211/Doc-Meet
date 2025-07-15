@@ -11,7 +11,10 @@ function Appointment() {
 
   return (
     <div className="container">
+      {/* Header */}
       <Header/>
+
+      {/* Appoinntment Form */}
       <h1>Book an Appointment</h1>
       <p>Schedule your visit with our healthcare professionals</p>
 

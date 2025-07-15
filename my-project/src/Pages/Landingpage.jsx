@@ -33,9 +33,9 @@ function Landingpage() {
               </svg>
             </Link>
             
-            <button className="bg-white text-gray-900 px-8 py-4 rounded-lg hover:bg-gray-50 transition-all transform hover:scale-105 border border-gray-200 font-semibold">
+            <Link to="/doctors" className="bg-white text-gray-900 px-8 py-4 rounded-lg hover:bg-gray-50 transition-all transform hover:scale-105 border border-gray-200 font-semibold">
               View Doctors
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -21,7 +21,7 @@ function Header() {
             {/* Navigation */}
             <nav className="hidden md:flex space-x-8">
              <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</Link>
-            <Link to="/appointments" className="text-gray-700 hover:text-blue-600 transition-colors">Appointments</Link>
+            <Link to="" className="text-gray-700 hover:text-blue-600 transition-colors">Appointments</Link>
                <Link to="/doctors" className="text-gray-700 hover:text-blue-600 transition-colors">Doctors</Link>
               <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-colors">About Us</Link>
             </nav>

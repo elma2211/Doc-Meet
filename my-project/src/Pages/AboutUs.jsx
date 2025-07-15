@@ -14,9 +14,10 @@ const AboutUs = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-15">
+        
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-blue-600 mb-6">About MediCare</h2>
+          <h2 className="text-5xl font-bold text-blue-600 mb-6"><span className="text-blue-950">About</span> MediCare</h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Dedicated to providing exceptional healthcare services with compassion, innovation, 
             and excellence. Your health and wellbeing are our top priorities.
