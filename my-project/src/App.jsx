@@ -5,6 +5,9 @@ import AboutUs from './Pages/AboutUs';
 import Appointment from './Pages/Appointment';
 import Doctors from './Pages/Doctors.jsx';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AppointmentConfirmed from './Pages/AppointmentConfirmed.jsx';
+import Help from './Pages/help.jsx';
+import AppointmentsDashboard from './Pages/AppointmentDashboard.jsx';
 
 const App = () => {
   return (
@@ -17,6 +20,9 @@ const App = () => {
           {/* <Route path="/doctors/:id" element={<DoctorDetail />} /> */}
           <Route path="/appointments" element={<Appointment />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path='/confirm' element={<AppointmentConfirmed/>}/>
+          <Route path='/help' element={<Help/>}/>
+          <Route path='/appointmentdash' element={<AppointmentsDashboard/>}/>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE
           <Route path="*" element={<NotFound />} /> */}
         </Routes>

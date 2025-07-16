@@ -21,14 +21,14 @@ function Header() {
             {/* Navigation */}
             <nav className="hidden md:flex space-x-8">
              <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</Link>
-            <Link to="" className="text-gray-700 hover:text-blue-600 transition-colors">Appointments</Link>
+            <Link to="/appointmentdash" className="text-gray-700 hover:text-blue-600 transition-colors">Appointments</Link>
                <Link to="/doctors" className="text-gray-700 hover:text-blue-600 transition-colors">Doctors</Link>
               <Link to="/about" className="text-gray-700 hover:text-blue-600 transition-colors">About Us</Link>
             </nav>
 
             {/* CTA Button */}
-            <Link to='' className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-              Book Appointment
+            <Link to='/help' className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors">
+              Help
             </Link>
           </div>
         </div>
