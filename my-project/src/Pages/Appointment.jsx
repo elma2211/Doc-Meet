@@ -1,17 +1,41 @@
 import Header from '../components/Header';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase'; // adjust if needed
+
 
 function Appointment() {
   const [selectedTime, setSelectedTime] = useState(null);
+  const [doctors, setDoctors] = useState([]);
+
+  useEffect(() => {
+  const fetchDoctors = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'doctors'));
+      const doctorsData = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setDoctors(doctorsData);
+    } catch (error) {
+      console.error('Error fetching doctors:', error);
+    }
+  };
+
+  fetchDoctors();
+}, []);
+
+
  
   const [formData, setFormData] = useState({
     doctor: '',
     date: '',
     firstName: '',
     lastName: '',
-    email: 'xyz.doe@example.com',
-    phone: '(+91)123-4567-987',
+    email: '',
+    phone: '',
     symptoms: ''
   });
   
@@ -75,9 +99,12 @@ function Appointment() {
                 className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Choose a doctor</option>
-                <option value="Dr. Sitaraman">Dr. Sitaraman</option>
-                <option value="Dr. Mayank">Dr. Mayank</option>
-                <option value="Dr. Siya">Dr. Siya</option>
+               {doctors.map((doc) => (
+               <option key={doc.id} value={doc.name}>
+                 {doc.name} — {doc.specialty}
+                </option>
+                ))}
+
               </select>
             </div>
 
@@ -90,6 +117,7 @@ function Appointment() {
                 name="date"
                 value={formData.date}
                 onChange={handleInputChange}
+                min={new Date().toLocaleDateString('en-CA')} 
                 className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>

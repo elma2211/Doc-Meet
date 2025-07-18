@@ -1,4 +1,5 @@
 import React from 'react'
+import { Shield, Star, ArrowRight } from 'lucide-react';
 
 function Footer() {
   return (
@@ -17,6 +18,15 @@ function Footer() {
               </div> */}
               {/* </div> */}
               <span className="text-2xl font-bold mr-5-"> </span>
+
+               {/* Logo */}
+            <div className="flex items-center">
+                <div className="bg-blue-600 p-2 rounded-lg">
+                    <Shield className="h-8 w-8 text-white" />
+                   
+                  </div>
+              <span className="ml-3 text-xl font-semibold text-white">MediCare</span>
+            </div>
             </div>
             
             {/* Copyright */}

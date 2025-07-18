@@ -1,4 +1,5 @@
 import React from 'react';
+// import DoctorsUploader from "./DoctorsUploader";
 import { Star, ArrowRight } from 'lucide-react';
 import Landingpage from './Pages/Landingpage';
 import AboutUs from './Pages/AboutUs';
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </BrowserRouter>
+      {/* <DoctorsUploader /> */}
       {/* <Landingpage/> */}
     </div>
  

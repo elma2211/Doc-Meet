@@ -21,7 +21,7 @@ export default function AppointmentConfirmed() {
   } = appointmentData;
 
   const goHome = () => {
-    navigate("/LandingPage");
+    navigate("/");
   };
 
   // Format date to be more readable
