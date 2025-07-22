@@ -21,8 +21,8 @@ function Footer() {
 
                {/* Logo */}
             <div className="flex items-center">
-                <div className="bg-blue-600 p-2 rounded-lg">
-                    <Shield className="h-8 w-8 text-white" />
+                <div className="bg-white p-2 rounded-lg">
+                    <Shield className="h-8 w-8 text-blue-600" />
                    
                   </div>
               <span className="ml-3 text-xl font-semibold text-white">MediCare</span>

@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
 
 export default function Help() {
   const [isOpen, setIsOpen] = useState(true);
+   const navigate = useNavigate();
+  // const location = useLocation();
+  const goHome = () => {
+    navigate("/");
+  };
 
   if (!isOpen) {
     return (
@@ -25,12 +31,12 @@ export default function Help() {
       {/* Dialog */}
       <div className="bg-white rounded-lg shadow-2xl max-w-md w-full mx-4 p-8 relative z-50">
         {/* Close Button */}
-        <button 
+        {/* <button 
           onClick={() => setIsOpen(false)}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
         >
           <X size={24} />
-        </button>
+        </button> */}
 
         {/* Header */}
         <div className="text-center mb-8">
@@ -77,7 +83,7 @@ export default function Help() {
 
         {/* OK Button */}
         <button 
-          onClick={() => setIsOpen(false)}
+          onClick={goHome}
           className="w-full bg-blue-800 text-white py-3 rounded-lg font-medium hover:bg-blue-900 transition-colors"
         >
           OK

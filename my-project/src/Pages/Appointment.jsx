@@ -2,7 +2,7 @@ import Header from '../components/Header';
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { db } from '../firebase'; // adjust if needed
 
 
@@ -52,29 +52,48 @@ function Appointment() {
       [name]: value
     }));
   };
+const submitForm = async (e) => {
+  e.preventDefault();
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    
-    if (!formData.doctor || !formData.date || !selectedTime || !formData.firstName || !formData.lastName || !formData.email) {
-      alert("Please fill in all required fields including selecting a time.");
-      return;
-    }
+  if (!formData.doctor || !formData.date || !selectedTime || !formData.firstName || !formData.lastName || !formData.email) {
+    alert("Please fill in all required fields including selecting a time.");
+    return;
+  }
 
-    // Navigate to confirmation page with form data
-    navigate('/confirm', {
-      state: {
-        doctor: formData.doctor,
-        date: formData.date,
-        time: selectedTime,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        symptoms: formData.symptoms
-      }
-    });
-  };
+  try {
+    // Optional: Find selected doctor to get specialty, location, etc.
+    const selectedDoctor = doctors.find(d => d.name === formData.doctor);
+
+   const appointmentData = {
+  doctor: formData.doctor,
+  doctorName: formData.doctor, // for Dashboard
+  specialty: selectedDoctor?.specialty || 'General',
+  date: formData.date,
+  time: selectedTime,
+  type: "In-Person",
+  location: selectedDoctor?.location || 'Clinic',
+  address: "123 Health St, Medical District",
+  phone: formData.phone,
+  email: formData.email,
+  avatar: selectedDoctor?.name.includes("Sarah") || selectedDoctor?.name.includes("Lisa") ? "👩‍⚕️" : "👨‍⚕️",
+  status: "Confirmed",
+  reason: formData.symptoms || "",
+  firstName: formData.firstName,
+  lastName: formData.lastName,
+  patientName: `${formData.firstName} ${formData.lastName}`
+};
+
+
+    await addDoc(collection(db, "appointments"), appointmentData);
+
+    // Redirect to appointments page after booking
+    navigate('/confirm');
+  } catch (error) {
+    console.error("Error booking appointment:", error);
+    alert("Something went wrong. Please try again.");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">

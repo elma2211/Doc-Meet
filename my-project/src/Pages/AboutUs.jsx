@@ -42,7 +42,7 @@ const AboutUs = () => {
           </div>
 
           {/* Vision */}
-          <div className="bg-white rounded-xl p-8 shadow-sm">
+          <div className="bg-white rounded-xl p-8 shadow-sm ">
             <div className="flex items-center mb-6">
               <div className="bg-blue-100 p-3 rounded-full">
                 <Award className="h-8 w-8 text-blue-600" />
@@ -57,16 +57,17 @@ const AboutUs = () => {
         </div>
 
         {/* Core Values */}
-        <div className="bg-gray-100 rounded-2xl p-12 mb-20">
-          <h3 className="text-3xl font-bold text-blue-600 text-center mb-12">Our Core Values</h3>
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="bg-gray-100 rounded-2xl p-12 mb-20 bg-[url(/public/img3.jpg)] bg-cover relative ">
+         <div className='absolute inset-0 bg-black/80'></div>
+          <h3 className="relative z-10 text-3xl font-bold text-blue-600 text-center mb-12">Our Core Values</h3>
+          <div className="relative z-10 grid md:grid-cols-3 gap-8">
             {/* Compassion */}
             <div className="text-center">
               <div className="bg-blue-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <Heart className="h-10 w-10 text-blue-600" />
               </div>
               <h4 className="text-xl font-bold text-blue-600 mb-4">Compassion</h4>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-white leading-relaxed">
                 We treat every patient with empathy, understanding, and genuine care for their 
                 wellbeing and concerns.
               </p>
@@ -74,11 +75,11 @@ const AboutUs = () => {
 
             {/* Trust */}
             <div className="text-center">
-              <div className="bg-blue-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+              <div className="bg-white p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <Shield className="h-10 w-10 text-blue-600" />
               </div>
               <h4 className="text-xl font-bold text-blue-600 mb-4">Trust</h4>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-white leading-relaxed">
                 We maintain the highest standards of integrity, transparency, and confidentiality 
                 in all our healthcare services.
               </p>
@@ -90,7 +91,7 @@ const AboutUs = () => {
                 <Users className="h-10 w-10 text-blue-600" />
               </div>
               <h4 className="text-xl font-bold text-blue-600 mb-4">Excellence</h4>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-white leading-relaxed">
                 We continuously strive for the highest quality in medical care, technology, 
                 and patient experience.
               </p>

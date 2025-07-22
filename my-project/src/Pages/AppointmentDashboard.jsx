@@ -1,78 +1,34 @@
-import React, { useState } from 'react';
 import { Calendar, Clock, Phone, Mail, MapPin, MoreHorizontal, Plus, Check, X } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const AppointmentsDashboard = () => {
   const [activeTab, setActiveTab] = useState('All');
   const [showDropdown, setShowDropdown] = useState(null);
+  const [appointments, setAppointments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Mock appointments data using the doctors from your list
-  const [appointments, setAppointments] = useState([
-    {
-      id: 1,
-      patientName: "John Smith",
-      doctorName: "Dr. Sarah Johnson",
-      specialty: "Cardiology",
-      date: "2024-07-05",
-      time: "10:00 AM",
-      phone: "(555) 123-4567",
-      email: "john.smith@email.com",
-      location: "Downtown Medical Center",
-      reason: "Regular checkup",
-      status: "Confirmed"
-    },
-    {
-      id: 2,
-      patientName: "Emily Davis",
-      doctorName: "Dr. Michael Chen",
-      specialty: "Dermatology",
-      date: "2024-07-06",
-      time: "2:30 PM",
-      phone: "(555) 987-6543",
-      email: "emily.davis@email.com",
-      location: "Skin Care Clinic",
-      reason: "Skin consultation",
-      status: "Pending"
-    },
-    {
-      id: 3,
-      patientName: "Robert Johnson",
-      doctorName: "Dr. Emily Davis",
-      specialty: "Pediatrics",
-      date: "2024-07-08",
-      time: "11:15 AM",
-      phone: "(555) 456-7890",
-      email: "robert.johnson@email.com",
-      location: "Children's Health Center",
-      reason: "Child wellness exam",
-      status: "Confirmed"
-    },
-    {
-      id: 4,
-      patientName: "Maria Garcia",
-      doctorName: "Dr. James Wilson",
-      specialty: "Orthopedics",
-      date: "2024-07-09",
-      time: "9:30 AM",
-      phone: "(555) 234-5678",
-      email: "maria.garcia@email.com",
-      location: "Sports Medicine Center",
-      reason: "Knee injury follow-up",
-      status: "Completed"
-    },
-    {
-      id: 5,
-      patientName: "David Lee",
-      doctorName: "Dr. Lisa Anderson",
-      specialty: "Neurology",
-      date: "2024-07-10",
-      time: "3:00 PM",
-      phone: "(555) 345-6789",
-      email: "david.lee@email.com",
-      location: "Neurology Institute",
-      reason: "Migraine consultation",
-      status: "Cancelled"
-    }
-  ]);
+  // Fetch appointments from Firebase
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        setLoading(true);
+        const querySnapshot = await getDocs(collection(db, 'appointments'));
+        const appointmentsData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setAppointments(appointmentsData);
+      } catch (error) {
+        console.error('Error fetching appointments:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAppointments();
+  }, []);
 
   const getStatusCounts = () => {
     const counts = appointments.reduce((acc, appointment) => {
@@ -109,16 +65,39 @@ const AppointmentsDashboard = () => {
     setShowDropdown(showDropdown === appointmentId ? null : appointmentId);
   };
 
-  const handleStatusChange = (appointmentId, newStatus) => {
-    setAppointments(prevAppointments => 
-      prevAppointments.map(appointment => 
-        appointment.id === appointmentId 
-          ? { ...appointment, status: newStatus }
-          : appointment
-      )
-    );
-    setShowDropdown(null);
+  const handleStatusChange = async (appointmentId, newStatus) => {
+    try {
+      // Update in Firebase
+      const appointmentRef = doc(db, 'appointments', appointmentId);
+      await updateDoc(appointmentRef, {
+        status: newStatus
+      });
+
+      // Update local state
+      setAppointments(prevAppointments => 
+        prevAppointments.map(appointment => 
+          appointment.id === appointmentId 
+            ? { ...appointment, status: newStatus }
+            : appointment
+        )
+      );
+      setShowDropdown(null);
+    } catch (error) {
+      console.error('Error updating appointment status:', error);
+      alert('Failed to update appointment status. Please try again.');
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading appointments...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -186,7 +165,7 @@ const AppointmentsDashboard = () => {
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-3">
                     <h3 className="text-xl font-semibold text-blue-900">
-                      {appointment.patientName}
+                      {appointment.patientName || `${appointment.firstName} ${appointment.lastName}`}
                     </h3>
                     <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(appointment.status)}`}>
                       {appointment.status}
@@ -194,7 +173,7 @@ const AppointmentsDashboard = () => {
                   </div>
                   
                   <div className="text-gray-600 mb-4">
-                    {appointment.doctorName} • {appointment.specialty}
+                    {appointment.doctorName || appointment.doctor} • {appointment.specialty}
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -218,13 +197,15 @@ const AppointmentsDashboard = () => {
 
                   <div className="flex items-center gap-2 text-gray-600 mt-2">
                     <MapPin className="w-4 h-4" />
-                    <span>{appointment.location}</span>
+                    <span>{appointment.location || 'Clinic'}</span>
                   </div>
 
-                  <div className="mt-4 bg-gray-50 p-3 rounded-lg">
-                    <div className="text-sm font-medium text-gray-700 mb-1">Reason for Visit:</div>
-                    <div className="text-gray-600">{appointment.reason}</div>
-                  </div>
+                  {appointment.reason && (
+                    <div className="mt-4 bg-gray-50 p-3 rounded-lg">
+                      <div className="text-sm font-medium text-gray-700 mb-1">Reason for Visit:</div>
+                      <div className="text-gray-600">{appointment.reason}</div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Action Menu */}
@@ -269,7 +250,7 @@ const AppointmentsDashboard = () => {
           ))}
         </div>
 
-        {filteredAppointments.length === 0 && (
+        {filteredAppointments.length === 0 && !loading && (
           <div className="text-center py-12">
             <div className="text-gray-500 text-lg">No appointments found for "{activeTab}"</div>
           </div>

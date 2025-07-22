@@ -9,26 +9,29 @@ function Landingpage() {
 
   
   return (
-   <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+
+   <div className="min-h-screen bg-gradient-to-br  from-blue-50 to-indigo-100">
       {/* Header */}
          <Header/>
       
       
       {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 mt-15">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 mt-15 bg-[url(/public/img2.jpg)] bg-cover relative  ">
+      <div className='absolute inset-0 bg-black/60'></div>
+        {/* <img src='/public/img1.jpg' alt='hospital'/> */}
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
             Your Health, <span className="text-blue-600">Our Priority</span>
           </h1>
           
-          <p className="text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-white mb-12 max-w-4xl mx-auto leading-relaxed">
             Book appointments with trusted healthcare professionals. Easy scheduling, 
             secure records, and quality care at your fingertips.
           </p>
 
           {/* */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to='/appointments' className="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105 flex items-center gap-2 font-semibold">
+            <Link to='/appointment' className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105 flex items-center gap-2 font-semibold">
               Book Appointment
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -104,13 +107,13 @@ function Landingpage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {/* Stat 1 */}
             <div className="text-white">
-              <div className="text-5xl md:text-6xl font-bold mb-4">50K+</div>
+              <div className="text-5xl md:text-6xl font-bold mb-4">5K+</div>
               <div className="text-xl text-blue-100">Happy Patients</div>
             </div>
 
             {/* Stat 2 */}
             <div className="text-white">
-              <div className="text-5xl md:text-6xl font-bold mb-4">200+</div>
+              <div className="text-5xl md:text-6xl font-bold mb-4">50+</div>
               <div className="text-xl text-blue-100">Expert Doctors</div>
             </div>
 
@@ -145,10 +148,10 @@ function Landingpage() {
           <p className="text-xl text-gray-600 mb-10">
             Join thousands of satisfied patients who trust MediCare for their healthcare needs.
           </p>
-          <button className="bg-gray-800 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-gray-700 transition-colors inline-flex items-center">
+          <Link to="/appointment" className="bg-gray-800 text-white px-8 py-4 rounded-lg font-medium text-lg hover:bg-gray-700 transition-colors inline-flex items-center">
             Book Your First Appointment
             <ArrowRight className="ml-2 w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </section>
         
