@@ -12,7 +12,9 @@ import AppointmentsDashboard from './Pages/AppointmentDashboard.jsx';
 import MyAppointments from './Pages/MyAppointments.jsx';
 import DoctorProfile from './Pages/DoctorProfile.jsx';
 import AppointmentDetails from './Pages/AppointmentDetails.jsx';
-// import UpdateDoctorHours from './UpdateDoctorHours';
+import Login from './Pages/Login.jsx';
+import Admin from './Pages/Admin.jsx';
+// import UploadDoctor from './UploadDoctor.jsx';
 
 
 const App = () => {
@@ -32,13 +34,16 @@ const App = () => {
           <Route path="/doctors/:name" element={<DoctorProfile />} />
           <Route path='/appointmentdash' element={<AppointmentsDashboard/>}/>
           <Route path="/appointments/:id" element={<AppointmentDetails />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE
-          <Route path="*" element={<NotFound />} /> */}
+           <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
+          
+         {/*<Route path="*" element={<NotFound />} /> */}
         </Routes>
       </BrowserRouter>
       {/* <DoctorsUploader /> */}
       {/* <Landingpage/> */}
       {/* <UpdateDoctorHours /> */}
+      {/* <UploadDoctor/> */}
     </div>
  
   )

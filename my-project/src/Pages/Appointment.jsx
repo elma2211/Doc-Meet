@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { collection, getDocs, addDoc } from 'firebase/firestore';
-import { db } from '../firebase'; // adjust if needed
+import { db } from '../firebase'; 
 
 
 function Appointment() {
@@ -87,7 +87,7 @@ const submitForm = async (e) => {
     await addDoc(collection(db, "appointments"), appointmentData);
 
     // Redirect to appointments page after booking
-    navigate('/confirm');
+    navigate('/myappointments');
   } catch (error) {
     console.error("Error booking appointment:", error);
     alert("Something went wrong. Please try again.");

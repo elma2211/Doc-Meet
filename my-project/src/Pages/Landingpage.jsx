@@ -1,11 +1,92 @@
 import React from 'react'
-import { Shield, Star, ArrowRight } from 'lucide-react';
+import { Shield, Star, ArrowRight ,Heart, Brain, Bone, Zap, Stethoscope, Smile } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from "react-router-dom";
 
 
 function Landingpage() {
+
+  const specialties = [
+    {
+      name: "Cardiology",
+      description: "Heart and cardiovascular care",
+      icon: Heart,
+      iconBg: "bg-red-100",
+      iconColor: "text-red-600",
+      conditions: [
+        "Heart disease & arrhythmia",
+        "High blood pressure", 
+        "Chest pain evaluation",
+        "Heart attack prevention"
+      ]
+    },
+    {
+      name: "Neurology",
+      description: "Brain and nervous system disorders",
+      icon: Brain,
+      iconBg: "bg-pink-100",
+      iconColor: "text-pink-600",
+      conditions: [
+        "Stroke & seizures",
+        "Migraine & headaches",
+        "Epilepsy treatment",
+        "Memory disorders"
+      ]
+    },
+    {
+      name: "Orthopedics",
+      description: "Bone, joint and muscle care",
+      icon: Bone,
+      iconBg: "bg-blue-100",
+      iconColor: "text-blue-600",
+      conditions: [
+        "Bone fractures & injuries",
+        "Arthritis & joint pain",
+        "Sports injuries",
+        "Back & spine problems"
+      ]
+    },
+    {
+      name: "Dermatology",
+      description: "Skin, hair and nail conditions",
+      icon: Zap,
+      iconBg: "bg-yellow-100",
+      iconColor: "text-yellow-600",
+      conditions: [
+        "Acne & skin infections",
+        "Eczema & psoriasis",
+        "Skin cancer screening",
+        "Hair loss treatment"
+      ]
+    },
+    {
+      name: "Endocrinology",
+      description: "Hormone and diabetes care",
+      icon: Stethoscope,
+      iconBg: "bg-green-100",
+      iconColor: "text-green-600",
+      conditions: [
+        "Type 1 & 2 diabetes",
+        "Thyroid disorders",
+        "Hormone imbalances",
+        "Metabolic disorders"
+      ]
+    },
+    {
+      name: "Mental Health",
+      description: "Psychological and emotional wellness",
+      icon: Smile,
+      iconBg: "bg-orange-100",
+      iconColor: "text-orange-600",
+      conditions: [
+        "Depression & anxiety",
+        "Stress management",
+        "PTSD & trauma therapy",
+        "Addiction counseling"
+      ]
+    }
+  ];
 
   
   return (
@@ -16,7 +97,7 @@ function Landingpage() {
       
       
       {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 mt-15 bg-[url(/public/img2.jpg)] bg-cover relative  ">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 mt-15 bg-[url(/img2.jpg)] bg-cover relative  ">
       <div className='absolute inset-0 bg-black/60'></div>
         {/* <img src='/public/img1.jpg' alt='hospital'/> */}
         <div className="relative z-10 max-w-6xl mx-auto text-center">
@@ -136,6 +217,63 @@ function Landingpage() {
           </div>
         </div>
       </section>
+
+
+        <div className="max-w-7xl mx-auto px-6 py-16">
+      {/* Header Section */}
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-blue-800 mb-4">
+          Medical Specialties & Conditions We Treat
+        </h2>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          Find the right specialist for your health needs. Our expert doctors treat a wide range of conditions.
+        </p>
+      </div>
+
+      {/* Specialties Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {specialties.map((specialty, index) => {
+          const IconComponent = specialty.icon;
+          return (
+            <div 
+              key={index}
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-100"
+            >
+              {/* Icon and Title */}
+              <div className="flex items-center mb-4">
+                <div className={`${specialty.iconBg} p-3 rounded-lg mr-4`}>
+                  <IconComponent className={`w-6 h-6 ${specialty.iconColor}`} />
+                </div>
+                <h3 className="text-xl font-semibold text-blue-800">
+                  {specialty.name}
+                </h3>
+              </div>
+
+              {/* Description */}
+              <p className="text-gray-600 mb-4 font-medium">
+                {specialty.description}
+              </p>
+
+              {/* Conditions List */}
+              <ul className="space-y-2">
+                {specialty.conditions.map((condition, conditionIndex) => (
+                  <li key={conditionIndex} className="text-gray-500 text-sm">
+                    • {condition}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* View All Specialists Button */}
+      <div className="text-center">
+        <Link to="/doctors" className="bg-white hover:bg-blue-900 text-black font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+          View All Specialists
+        </Link>
+      </div>
+    </div>
 
 
 

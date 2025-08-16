@@ -109,10 +109,7 @@ const AppointmentsDashboard = () => {
               <h1 className="text-3xl font-bold text-blue-900">Appointments</h1>
               <p className="text-gray-600 mt-1">Manage and track all patient appointments</p>
             </div>
-            <button className="bg-blue-900 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-800 transition-colors">
-              <Plus className="w-4 h-4" />
-              New Appointment
-            </button>
+            
           </div>
         </div>
       </div>

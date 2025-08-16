@@ -57,7 +57,7 @@ const AboutUs = () => {
         </div>
 
         {/* Core Values */}
-        <div className="bg-gray-100 rounded-2xl p-12 mb-20 bg-[url(/public/img3.jpg)] bg-cover relative ">
+        <div className="bg-gray-100 rounded-2xl p-12 mb-20 bg-[url(/img3.jpg)] bg-cover relative ">
          <div className='absolute inset-0 bg-black/80'></div>
           <h3 className="relative z-10 text-3xl font-bold text-blue-600 text-center mb-12">Our Core Values</h3>
           <div className="relative z-10 grid md:grid-cols-3 gap-8">

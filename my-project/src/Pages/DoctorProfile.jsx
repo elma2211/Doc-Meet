@@ -170,7 +170,7 @@ const DoctorProfile = () => {
           <div className="lg:col-span-2 space-y-6">
             {/* About Section */}
             <Section 
-              title="About Dr. Sarah" 
+              title="About"
               icon={<Heart className="w-5 h-5 text-blue-600" />}
             >
               <p className="text-gray-700 leading-relaxed">

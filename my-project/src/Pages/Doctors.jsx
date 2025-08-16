@@ -3,7 +3,7 @@ import { MapPin, Clock, Star, Filter } from 'lucide-react';
 import Header from '../components/Header';
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase'; // adjust path if needed
+import { db } from '../firebase'; 
 import { Link } from "react-router-dom";
 
 const Doctors = () => {
