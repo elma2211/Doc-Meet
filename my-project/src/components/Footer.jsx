@@ -1,5 +1,6 @@
 import React from 'react'
-import { Shield, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Shield, Phone, Mail, MapPin, Clock} from 'lucide-react';
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -27,28 +28,28 @@ function Footer() {
             {/* Quick Links */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-3">
-                <li>
-                  <a href="#" className="text-blue-100 hover:text-white transition-colors duration-200">
+              <div className="flex flex-col leading-tight">
+               
+                  <Link to="/" className="text-blue-100 hover:text-white transition-colors duration-200">
                     Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-100 hover:text-white transition-colors duration-200">
+                  </Link>
+                <br/>
+               
+                  <Link to="/about" className="text-blue-100 hover:text-white transition-colors duration-200">
                     About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-100 hover:text-white transition-colors duration-200">
+                  </Link>
+               <br/>
+                
+                  <Link to="/doctors" className="text-blue-100 hover:text-white transition-colors duration-200">
                     Our Doctors
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-blue-100 hover:text-white transition-colors duration-200">
+                  </Link>
+                <br/>
+               
+                  <Link to="/appointment" className="text-blue-100 hover:text-white transition-colors duration-200">
                     Book Appointment
-                  </a>
-                </li>
-              </ul>
+                  </Link>
+                
+              </div>
             </div>
 
             {/* Services */}
@@ -84,7 +85,7 @@ function Footer() {
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <Phone className="h-4 w-4 text-blue-300 mr-3 flex-shrink-0" />
-                  <span className="text-blue-100">+1 (555) 123-4567</span>
+                  <span className="text-blue-100">+91 123-4567890</span>
                 </li>
                 <li className="flex items-center">
                   <Mail className="h-4 w-4 text-blue-300 mr-3 flex-shrink-0" />
@@ -92,7 +93,7 @@ function Footer() {
                 </li>
                 <li className="flex items-start">
                   <MapPin className="h-4 w-4 text-blue-300 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-blue-100">123 Healthcare Ave, Medical City, MC 12345</span>
+                  <span className="text-blue-100">123 Paras Health Care, Medical City, MC 12345</span>
                 </li>
                 <li className="flex items-center">
                   <Clock className="h-4 w-4 text-blue-300 mr-3 flex-shrink-0" />

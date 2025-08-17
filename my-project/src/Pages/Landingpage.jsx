@@ -112,7 +112,7 @@ function Landingpage() {
 
           {/* */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to='/appointment' className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105 flex items-center gap-2 font-semibold">
+            <Link to='/appointment' className="bg-gray-900 text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-all transform hover:scale-105 flex items-center gap-2 font-semibold">
               Book Appointment
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -126,7 +126,7 @@ function Landingpage() {
         </div>
       </section>
 
-      {/* Why Choose MediCare Section */}
+      {/* Why Choose Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
 export default function Login() {
   const [isLogin, setIsLogin] = useState(true);
     const navigate = useNavigate();
@@ -60,7 +61,8 @@ export default function Login() {
   const result = await loginUser(email, password);
   if (result.success) {
     alert(`Welcome back, ${result.user.displayName}!`);
-  navigate('/dashboard');
+    localStorage.setItem("user", JSON.stringify(result.user)); // save user
+  navigate('/');
     // Redirect or set user context here
   } else {
     alert(`Login failed: ${result.error}`);

@@ -1,8 +1,20 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Shield, Star, ArrowRight } from 'lucide-react';
 
+
+
 function Header() {
+
+  const navigate = useNavigate();
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+
+
+    const handleLogout = () => {
+    localStorage.removeItem("user");  // clear session
+    navigate("/login");               // redirect to login page
+  };
+   
   return (
     <div >
       {/* Header */}
@@ -31,9 +43,25 @@ function Header() {
             <Link to='/help' className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors ">
               Help
             </Link>
+
+
+             {storedUser ? (
+        <div className="flex items-center gap-4">
+          <span className="font-medium">Hi, {storedUser.displayName || storedUser.email}</span>
+          <button
+            onClick={handleLogout}
+            className="bg-gray-900 text-white px-4 py-2 rounded hover:bg-gray-800 "
+          >
+            Logout
+          </button>
+        </div>
+      ) : (
+            
             <Link to='/login' className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors">
               Login
             </Link>
+            )}
+             
             </div>
           </div>
         </div>

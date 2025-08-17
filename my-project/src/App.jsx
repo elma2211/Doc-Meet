@@ -14,6 +14,7 @@ import DoctorProfile from './Pages/DoctorProfile.jsx';
 import AppointmentDetails from './Pages/AppointmentDetails.jsx';
 import Login from './Pages/Login.jsx';
 import Admin from './Pages/Admin.jsx';
+
 // import UploadDoctor from './UploadDoctor.jsx';
 
 
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/appointments/:id" element={<AppointmentDetails />} />
            <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<Admin />} />
+            
           
          {/*<Route path="*" element={<NotFound />} /> */}
         </Routes>
@@ -44,6 +46,7 @@ const App = () => {
       {/* <Landingpage/> */}
       {/* <UpdateDoctorHours /> */}
       {/* <UploadDoctor/> */}
+       
     </div>
  
   )
